@@ -1,0 +1,21 @@
+name: Inspection
+on:
+  [pull_request, push]
+  
+jobs:
+  inspection:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: '6.0.100'
+        - name: Restore
+          run: dotnet restore
+        - name: Build
+          run: dotnet build --no-restore -warnAsError nature_remo_monitor
+        - name: Inspection
+          uses: muno92/resharper_inspectcode@1.2.0
+          with:
+            solutionPath: ./life_log.sln
+
