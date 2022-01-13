@@ -18,4 +18,5 @@ jobs:
           uses: muno92/resharper_inspectcode@1.2.0
           with:
             solutionPath: ./life_log.sln
+            version: 2021.3.2
 
