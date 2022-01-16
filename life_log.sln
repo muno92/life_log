@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nature_remo_monitor", "nature_remo_monitor\nature_remo_monitor.csproj", "{1A2F2FC8-82AB-463E-8F75-5B3EBF511BA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NatureRemoMonitor", "NatureRemoMonitor\NatureRemoMonitor.csproj", "{1A2F2FC8-82AB-463E-8F75-5B3EBF511BA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

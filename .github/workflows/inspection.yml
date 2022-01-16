@@ -13,7 +13,7 @@ jobs:
         - name: Restore
           run: dotnet restore
         - name: Build
-          run: dotnet build --no-restore -warnAsError nature_remo_monitor
+          run: dotnet build --no-restore -warnAsError NatureRemoMonitor
         - name: Inspection
           uses: muno92/resharper_inspectcode@1.2.0
           with:
