@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using NatureRemoMonitor.Exception;
 
 namespace NatureRemoMonitor.API;
@@ -5,7 +6,6 @@ namespace NatureRemoMonitor.API;
 public class Client
 {
     private readonly HttpClient _httpClient;
-    private readonly string _token;
 
     public Client(HttpClient httpClient, string token)
     {
@@ -15,6 +15,13 @@ public class Client
         }
 
         _httpClient = httpClient;
-        _token = token;
+        _httpClient.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse($"Bearer {token}");
+    }
+
+    public async Task<int> FetchNewestSensorValue()
+    {
+        var response = await _httpClient.GetAsync("https://api.nature.global/1/devices");
+
+        return (int)response.StatusCode;
     }
 }
