@@ -1,4 +1,4 @@
-name: Inspection
+name: QA
 on:
   [pull_request, push]
   
@@ -19,4 +19,15 @@ jobs:
           with:
             solutionPath: ./life_log.sln
             version: 2021.3.2
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+      - name: Restore
+        run: dotnet restore
+      - name: Run Test
+        run: dotnet test NatureRemoTest
 
