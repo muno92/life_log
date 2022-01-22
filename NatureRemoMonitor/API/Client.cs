@@ -25,12 +25,14 @@ public class Client
         var response = await _httpClient.GetAsync("https://api.nature.global/1/devices");
         var responseBody = await response.Content.ReadAsStringAsync();
 
-        var devices = JsonSerializer.Deserialize<IEnumerable<Device>>(responseBody);
-        if (devices == null)
+        try
         {
-            throw new Exception.NotSupportedException();
+            return JsonSerializer.Deserialize<IEnumerable<Device>>(responseBody) ??
+                   throw new Exception.NotSupportedException();
         }
-
-        return devices;
+        catch (System.Exception e) when (e is System.NotSupportedException or JsonException)
+        {
+            throw new Exception.NotSupportedException("Failed to deserialize.", e);
+        }
     }
 }
