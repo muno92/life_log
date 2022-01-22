@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using NatureRemoMonitor.API;
+using NatureRemoMonitor.API.Resource;
 using NatureRemoMonitor.Exception;
 using NUnit.Framework;
 
@@ -29,8 +31,8 @@ public class ClientTest
         var token = Environment.GetEnvironmentVariable("NATURE_REMO_ACCESS_TOKEN") ?? "";
         var client = new Client(new HttpClient(), token);
 
-        var statusCode = await client.FetchNewestSensorValue();
+        var devices = await client.FetchNewestSensorValue();
 
-        Assert.That(statusCode, Is.EqualTo(200));
+        Assert.That(devices, Is.InstanceOf<IEnumerable<Device>>());
     }
 }
