@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using NatureRemoMonitor.API;
-using NatureRemoMonitor.API.Resource;
 using NatureRemoMonitor.Exception;
 using NUnit.Framework;
 
@@ -33,6 +32,6 @@ public class ClientTest
 
         var devices = await client.FetchNewestSensorValue();
 
-        Assert.That(devices, Is.InstanceOf<IEnumerable<Device>>());
+        Assert.That(devices.Select(d => d.Name), Is.All.Not.Null);
     }
 }
