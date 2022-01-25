@@ -25,9 +25,14 @@ public class Client
         var response = await _httpClient.GetAsync("https://api.nature.global/1/devices");
         var responseBody = await response.Content.ReadAsStringAsync();
 
+        var option = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = new SnakeCaseNamingPolicy()
+        };
+
         try
         {
-            return JsonSerializer.Deserialize<IEnumerable<Device>>(responseBody) ??
+            return JsonSerializer.Deserialize<IEnumerable<Device>>(responseBody, option) ??
                    throw new Exception.NotSupportedException();
         }
         catch (System.Exception e) when (e is System.NotSupportedException or JsonException)
