@@ -20,7 +20,7 @@ jobs:
             solutionPath: ./life_log.sln
             version: 2021.3.2
             minimumSeverity: warning
-            ignoreIssueType: UnusedField.Compiler
+            ignoreIssueType: UnusedField.Compiler,UnusedMember.Global
   test:
     runs-on: ubuntu-latest
     steps:
