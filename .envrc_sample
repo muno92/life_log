@@ -1,1 +1,2 @@
 export NATURE_REMO_ACCESS_TOKEN=xxx
+export GOOGLE_SHEET_API_KEY=yyy
