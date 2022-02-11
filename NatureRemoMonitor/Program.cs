@@ -29,4 +29,4 @@ var insertRow = new List<object>()
     newestEvents.Illumination.Val,
 };
 
-sheetClient.Append(spreadsheetId, "Sheet1!A1:D", insertRow);
+sheetClient.Append(spreadsheetId, "SensorValues!A1:D", insertRow);
