@@ -29,7 +29,7 @@ public class SheetTest
         var client = new Client(base64EncodedCredential);
 
         var spreadsheetId = Environment.GetEnvironmentVariable("TEST_SPREADSHEET_ID") ?? "";
-        var range = "Sheet2!A1:D";
+        var range = "SensorValues!A1:D";
 
         var valuesBeforeInsert = client.Read(spreadsheetId, range);
 
