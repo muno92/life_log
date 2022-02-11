@@ -34,4 +34,6 @@ jobs:
         run: dotnet test NatureRemoTest
         env:
           NATURE_REMO_ACCESS_TOKEN: ${{ secrets.NATURE_REMO_ACCESS_TOKEN }}
+          GOOGLE_SHEET_CREDENTIAL: ${{ secrets.GOOGLE_SHEET_CREDENTIAL }}
+          TEST_SPREADSHEET_ID: ${{ secrets.TEST_SPREADSHEET_ID }}
 
