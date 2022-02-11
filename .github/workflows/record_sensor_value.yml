@@ -1,0 +1,20 @@
+name: Record Sensor Value
+on:
+  workflow_dispatch: 
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+      - name: Restore
+        run: dotnet restore
+      - name: Run
+        run: dotnet run NatureRemoMonitor
+        env:
+          NATURE_REMO_ACCESS_TOKEN: ${{ secrets.NATURE_REMO_ACCESS_TOKEN }}
+          GOOGLE_SHEET_CREDENTIAL: ${{ secrets.GOOGLE_SHEET_CREDENTIAL }}
+          SPREADSHEET_ID_FOR_RECORD: ${{ secrets.SPREADSHEET_ID_FOR_RECORD }}
