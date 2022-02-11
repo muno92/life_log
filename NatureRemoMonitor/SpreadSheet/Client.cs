@@ -35,6 +35,7 @@ public class Client
     {
         var value = new ValueRange { Values = new List<IList<object>> { row } };
         var request = _sheetsService.Spreadsheets.Values.Append(value, spreadsheetId, range);
+        //RAWでも表示上は問題無いが、セルの中身を見たときに文字列の先頭にシングルクオートがついていた
         request.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
 
         request.Execute();
