@@ -1,6 +1,7 @@
 name: Record Sensor Value
 on:
-  workflow_dispatch: 
+  schedule:
+    - cron: '*/10 * * * *'
 
 jobs:
   record:
