@@ -33,7 +33,7 @@ public class SheetTest
 
         var valuesBeforeInsert = client.Read(spreadsheetId, range);
 
-        var insertRow = new List<object>() { DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"), "20.5", "32", "0" };
+        var insertRow = new List<object>() { DateTime.Now.ToString("yyyy/MM/dd H:mm:ss"), "20.5", "32", "0" };
 
         // 元がdoubleだとしてもスプレッドシートから取得すると文字列になる。
         // 追記出来ているか確認出来れば良いので、文字列で追加・検証する
