@@ -10,12 +10,12 @@ public class Executor
     /// SpeedTest CLIを実行する
     /// </summary>
     /// <returns>実行結果のJSONをデシリアライズしたオブジェクト</returns>
-    public Output Exec()
+    public Output? Exec()
     {
         // このプロジェクト自身を実行しようとしてしまわないよう、絶対パスで指定する
         var startInfo = new ProcessStartInfo("/opt/homebrew/bin/speedtest")
         {
-            Arguments = "\"--format=json\" \"--progress=no\"",
+            Arguments = "'-f json' '-p no'",
             UseShellExecute = false,
             RedirectStandardOutput = true,
         };
@@ -31,6 +31,7 @@ public class Executor
         Console.WriteLine("Process start.");
 
         var stdout = process.StandardOutput.ReadToEnd();
+        Console.WriteLine(stdout);
         output = JsonSerializer.Deserialize<Output>(stdout, new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
