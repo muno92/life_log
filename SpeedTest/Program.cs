@@ -29,8 +29,8 @@ var insertRow = new List<object>()
     output.Ping.Jitter.ToString("F"),
     output.Ping.Latency.ToString("F"),
     output.PacketLoss.ToString("F"),
-    (output.Download.Bandwidth * 8 / 1000 / 1000).ToString("F"),
-    (output.Upload.Bandwidth * 8 / 1000 / 1000).ToString("F"),
+    ((double)output.Download.Bandwidth * 8 / 1000 / 1000).ToString("F"),
+    ((double)output.Upload.Bandwidth * 8 / 1000 / 1000).ToString("F"),
 };
 
 var sheetClient = new Client(base64EncodedCredential);
