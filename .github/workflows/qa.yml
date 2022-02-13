@@ -10,8 +10,6 @@ jobs:
         - uses: actions/setup-dotnet@v1
           with:
             dotnet-version: '6.0.x'
-        - name: Restore
-          run: dotnet restore
         - name: Build
           run: dotnet build --no-restore -warnAsError NatureRemoMonitor
         - name: Inspection
@@ -28,8 +26,6 @@ jobs:
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '6.0.x'
-      - name: Restore
-        run: dotnet restore
       - name: Run Nature Remo Test
         run: dotnet test NatureRemoTest
         env:
