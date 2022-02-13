@@ -15,7 +15,9 @@ public class Executor
         // このプロジェクト自身を実行しようとしてしまわないよう、絶対パスで指定する
         var startInfo = new ProcessStartInfo("/opt/homebrew/bin/speedtest")
         {
-            Arguments = "'-f json' '-p no'",
+            // スペースを含まない方法でオプションを指定する
+            // -f、-pだと「\"\"-f json\"\"」のように書かなければならず、見通しが悪くなるため
+            Arguments = "--format=json --progress=no",
             UseShellExecute = false,
             RedirectStandardOutput = true,
         };
