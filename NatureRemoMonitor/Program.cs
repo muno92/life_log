@@ -5,7 +5,7 @@ using SheetClient = SpreadSheet.Client;
 
 var token = Environment.GetEnvironmentVariable("NATURE_REMO_ACCESS_TOKEN") ?? "";
 var base64EncodedCredential = Environment.GetEnvironmentVariable("GOOGLE_SHEET_CREDENTIAL") ?? "";
-var spreadsheetId = Environment.GetEnvironmentVariable("SPREADSHEET_ID_FOR_RECORD") ?? "";
+var spreadsheetId = Environment.GetEnvironmentVariable("SPREADSHEET_ID_FOR_REMO") ?? "";
 
 if (new[] { token, base64EncodedCredential, spreadsheetId }.Any(s => string.IsNullOrEmpty(s)))
 {

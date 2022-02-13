@@ -33,7 +33,6 @@ public class Executor
         Console.WriteLine("Process start.");
 
         var stdout = process.StandardOutput.ReadToEnd();
-        Console.WriteLine(stdout);
         output = JsonSerializer.Deserialize<Output>(stdout, new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
