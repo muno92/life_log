@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NatureRemoMonitor.SpreadSheet;
 using NUnit.Framework;
+using SpreadSheet;
 
-namespace NatureRemoTest;
+namespace SpreadSheetTest;
 
 public class SheetTest
 {

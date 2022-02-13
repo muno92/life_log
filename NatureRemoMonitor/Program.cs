@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using RemoClient = NatureRemoMonitor.API.Client;
-using SheetClient = NatureRemoMonitor.SpreadSheet.Client;
+using SheetClient = SpreadSheet.Client;
 
 var token = Environment.GetEnvironmentVariable("NATURE_REMO_ACCESS_TOKEN") ?? "";
 var base64EncodedCredential = Environment.GetEnvironmentVariable("GOOGLE_SHEET_CREDENTIAL") ?? "";
