@@ -32,6 +32,7 @@ jobs:
         with:
           # 依存プロジェクトを読み込むためにはcontextがリポジトリルートで無ければいけない
           context: .
+          file: NatureRemoMonitor/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
