@@ -12,9 +12,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults: 
-      run: 
-        working-directory: NatureRemoMonitor
     steps:
       - uses: actions/checkout@v2
       - name: Set up Docker Buildx
@@ -33,7 +30,7 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: NatureRemoMonitor
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
