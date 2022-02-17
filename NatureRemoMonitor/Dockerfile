@@ -3,16 +3,16 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["nature_remo_monitor/nature_remo_monitor.csproj", "nature_remo_monitor/"]
-RUN dotnet restore "nature_remo_monitor/nature_remo_monitor.csproj"
+COPY ["NatureRemoMonitor/NatureRemoMonitor.csproj", "NatureRemoMonitor/"]
+RUN dotnet restore "NatureRemoMonitor/NatureRemoMonitor.csproj"
 COPY . .
-WORKDIR "/src/nature_remo_monitor"
-RUN dotnet build "nature_remo_monitor.csproj" -c Release -o /app/build
+WORKDIR "/src/NatureRemoMonitor"
+RUN dotnet build "NatureRemoMonitor.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "nature_remo_monitor.csproj" -c Release -o /app/publish
+RUN dotnet publish "NatureRemoMonitor.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "nature_remo_monitor.dll"]
+ENTRYPOINT ["dotnet", "NatureRemoMonitor.dll"]
