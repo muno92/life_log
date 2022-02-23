@@ -17,5 +17,6 @@ jobs:
         GOOGLE_SHEET_CREDENTIAL: ${{ secrets.GOOGLE_SHEET_CREDENTIAL }}
         SPREADSHEET_ID_FOR_REMO: ${{ secrets.SPREADSHEET_ID_FOR_REMO }}
     steps:
-      - name: Record
-        run: dotnet NatureRemoMonitor.dll
+      - run: |
+          pwd
+          ls -al
