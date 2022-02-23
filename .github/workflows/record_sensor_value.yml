@@ -8,7 +8,7 @@ jobs:
   record:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/${{ github.repository }}
+      image: ghcr.io/${{ github.repository }}:master
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
