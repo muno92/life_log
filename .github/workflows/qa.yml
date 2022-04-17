@@ -1,9 +1,13 @@
 name: QA
 on:
   pull_request:
+    paths:
+      - '**.cs'
+      - '**.csproj'
   push:
     paths:
       - '**.cs'
+      - '**.csproj'
 
 jobs:
   inspection:
