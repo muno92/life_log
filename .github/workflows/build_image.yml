@@ -1,9 +1,10 @@
 name: Build Image
 on:
-#  push:
-#    paths:
-#      - NatureRemoMonitor/**
-  workflow_dispatch: 
+  push:
+    branches:
+      - master
+    paths:
+      - NatureRemoMonitor/**
 
 env:
   REGISTRY: ghcr.io
