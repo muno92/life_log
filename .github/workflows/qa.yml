@@ -16,7 +16,7 @@ jobs:
         - uses: actions/checkout@v2
         - uses: actions/setup-dotnet@v1
           with:
-            dotnet-version: '6.0.x'
+            dotnet-version: '7.0.x'
         - name: Restore
           run: dotnet restore
         - name: Build
@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '7.0.x'
       - name: Run Nature Remo Test
         run: dotnet test NatureRemoTest
         env:
