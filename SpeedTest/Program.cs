@@ -31,6 +31,7 @@ var insertRow = new List<object>()
     output.PacketLoss.ToString("F"),
     ((double)output.Download.Bandwidth * 8 / 1000 / 1000).ToString("F"),
     ((double)output.Upload.Bandwidth * 8 / 1000 / 1000).ToString("F"),
+    output.Server.Name,
 };
 
 var sheetClient = new Client(base64EncodedCredential);
