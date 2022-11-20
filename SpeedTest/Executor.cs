@@ -12,12 +12,20 @@ public class Executor
     /// <returns>実行結果のJSONをデシリアライズしたオブジェクト</returns>
     public Output? Exec()
     {
+        var testServer = SelectTestServer();
+        var serverOption = "";
+        if (testServer != null)
+        {
+            serverOption = $" --server-id={testServer.Id}";
+            Console.WriteLine($"Test Server: {testServer.Name}");
+        }
+
         // このプロジェクト自身を実行しようとしてしまわないよう、絶対パスで指定する
         var startInfo = new ProcessStartInfo("/opt/homebrew/bin/speedtest")
         {
             // スペースを含まない方法でオプションを指定する
             // -f、-pだと「\"\"-f json\"\"」のように書かなければならず、見通しが悪くなるため
-            Arguments = "--format=json --progress=no",
+            Arguments = $"--format=json --progress=no{serverOption}",
             UseShellExecute = false,
             RedirectStandardOutput = true,
         };
@@ -42,5 +50,39 @@ public class Executor
         Console.WriteLine("Process finished.");
 
         return output;
+    }
+
+    /// <summary>
+    /// 不安定なテストサーバーを使わないようにする
+    /// </summary>
+    /// <returns></returns>
+    private Server? SelectTestServer()
+    {
+        // このプロジェクト自身を実行しようとしてしまわないよう、絶対パスで指定する
+        var startInfo = new ProcessStartInfo("/opt/homebrew/bin/speedtest")
+        {
+            // スペースを含まない方法でオプションを指定する
+            // -f、-pだと「\"\"-f json\"\"」のように書かなければならず、見通しが悪くなるため
+            Arguments = "--servers --format=json",
+            UseShellExecute = false,
+            RedirectStandardOutput = true,
+        };
+
+        using var process = new Process
+        {
+            StartInfo = startInfo
+        };
+
+        ServerList? serverList;
+
+        process.Start();
+
+        var stdout = process.StandardOutput.ReadToEnd();
+        serverList = JsonSerializer.Deserialize<ServerList>(stdout, new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+        });
+
+        return serverList?.Servers.SingleOrDefault(s => s.Name == "Verizon");
     }
 }
