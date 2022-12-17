@@ -22,10 +22,9 @@ jobs:
         - name: Build
           run: dotnet build --no-restore -warnAsError NatureRemoMonitor
         - name: Inspection
-          uses: muno92/resharper_inspectcode@1.4.0
+          uses: muno92/resharper_inspectcode@1.6.5
           with:
             solutionPath: ./life_log.sln
-            version: 2021.3.2
             minimumSeverity: warning
             ignoreIssueType: NotAccessedPositionalProperty.Global
   test:
