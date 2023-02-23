@@ -5,6 +5,7 @@ on:
       - master
     paths:
       - NatureRemoMonitor/**
+      - SpreadSheet/**
 
 env:
   REGISTRY: ghcr.io
