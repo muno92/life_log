@@ -30,10 +30,8 @@ public class Executor
             RedirectStandardOutput = true,
         };
 
-        using var process = new Process
-        {
-            StartInfo = startInfo
-        };
+        using var process = new Process();
+        process.StartInfo = startInfo;
 
         Output? output;
 
@@ -68,10 +66,8 @@ public class Executor
             RedirectStandardOutput = true,
         };
 
-        using var process = new Process
-        {
-            StartInfo = startInfo
-        };
+        using var process = new Process();
+        process.StartInfo = startInfo;
 
         ServerList? serverList;
 
