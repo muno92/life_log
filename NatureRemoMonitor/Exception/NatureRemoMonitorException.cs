@@ -1,14 +1,8 @@
-using System.Runtime.Serialization;
-
 namespace NatureRemoMonitor.Exception;
 
 public class NatureRemoMonitorException : System.Exception
 {
     public NatureRemoMonitorException()
-    {
-    }
-
-    protected NatureRemoMonitorException(SerializationInfo info, StreamingContext context) : base(info, context)
     {
     }
 

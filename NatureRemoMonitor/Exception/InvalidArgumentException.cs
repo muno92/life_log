@@ -1,14 +1,8 @@
-using System.Runtime.Serialization;
-
 namespace NatureRemoMonitor.Exception;
 
 public class InvalidArgumentException : NatureRemoMonitorException
 {
     public InvalidArgumentException()
-    {
-    }
-
-    protected InvalidArgumentException(SerializationInfo info, StreamingContext context) : base(info, context)
     {
     }
 
