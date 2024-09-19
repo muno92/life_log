@@ -6,6 +6,8 @@ using SpreadSheet;
 var base64EncodedCredential = Environment.GetEnvironmentVariable("GOOGLE_SHEET_CREDENTIAL") ?? "";
 var spreadsheetId = Environment.GetEnvironmentVariable("SPREADSHEET_ID_FOR_SPEED_TEST") ?? "";
 
+var unusedVar = 1;
+
 if (new[] { base64EncodedCredential, spreadsheetId }.Any(s => string.IsNullOrEmpty(s)))
 {
     Console.WriteLine("Environment Variables is not set.");
