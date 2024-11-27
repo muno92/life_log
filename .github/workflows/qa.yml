@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v4
-        - uses: actions/setup-dotnet@v3
+        - uses: actions/setup-dotnet@v4
           with:
-            dotnet-version: '8.0.x'
+            dotnet-version: '9.0.x'
         - name: Restore
           run: dotnet restore
         - name: Build
@@ -31,9 +31,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '9.0.x'
       - name: Run Nature Remo Test
         run: dotnet test NatureRemoTest
         env:
@@ -43,16 +43,3 @@ jobs:
         env:
           GOOGLE_SHEET_CREDENTIAL: ${{ secrets.GOOGLE_SHEET_CREDENTIAL }}
           TEST_SPREADSHEET_ID: ${{ secrets.TEST_SPREADSHEET_ID }}
-  inspect-code:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-      - name: Annotate
-        uses: JetBrains/ReSharper-InspectCode@v0.6
-        with:
-          solution: ./life_log.sln
-    permissions:
-      security-events: write
-
