@@ -18,7 +18,7 @@ var devices = await remoClient.FetchNewestSensorValue();
 
 var sheetClient = new SheetClient(base64EncodedCredential);
 
-var newestEvents = devices.Single(d => d.Name == "Remo").NewestEvents;
+var newestEvents = devices.Single(d => d.Name == "Remo 2nd").NewestEvents;
 
 var utcNow = DateTime.UtcNow;
 var timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
