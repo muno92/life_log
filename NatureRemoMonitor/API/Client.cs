@@ -1,7 +1,8 @@
 using System.Net.Http.Headers;
 using System.Text.Json;
-using NatureRemoMonitor.API.Resource;
 using NatureRemoMonitor.Exception;
+using Device = NatureRemoMonitor.API.Resource.Device;
+using NotSupportedException = NatureRemoMonitor.Exception.NotSupportedException;
 
 namespace NatureRemoMonitor.API;
 
@@ -33,11 +34,11 @@ public class Client
         try
         {
             return JsonSerializer.Deserialize<IEnumerable<Device>>(responseBody, option) ??
-                   throw new Exception.NotSupportedException();
+                   throw new NotSupportedException();
         }
         catch (System.Exception e) when (e is System.NotSupportedException or JsonException)
         {
-            throw new Exception.NotSupportedException("Failed to deserialize.", e);
+            throw new NotSupportedException("Failed to deserialize.", e);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using NatureRemoMonitor.Database;
 using RemoClient = NatureRemoMonitor.API.Client;
-using SheetClient = SpreadSheet.Client;
 
 var token = Environment.GetEnvironmentVariable("NATURE_REMO_ACCESS_TOKEN") ?? "";
 var base64EncodedCredential = Environment.GetEnvironmentVariable("GOOGLE_SHEET_CREDENTIAL") ?? "";
@@ -16,20 +16,17 @@ if (new[] { token, base64EncodedCredential, spreadsheetId }.Any(s => string.IsNu
 var remoClient = new RemoClient(new HttpClient(), token);
 var devices = await remoClient.FetchNewestSensorValue();
 
-var sheetClient = new SheetClient(base64EncodedCredential);
+var device = devices.Single(d => d.Name == "Remo 2nd");
+var newestEvents = device.NewestEvents;
 
-var newestEvents = devices.Single(d => d.Name == "Remo 2nd").NewestEvents;
-
-var utcNow = DateTime.UtcNow;
-var timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time");
-var jstNow = TimeZoneInfo.ConvertTimeFromUtc(utcNow, timeZoneInfo);
-
-var insertRow = new List<object>()
+await using var db = new PostgresContext();
+var sensorValue = new SensorValue()
 {
-    jstNow.ToString("yyyy/MM/dd HH:mm:ss"),
-    newestEvents.Temperature.Val,
-    newestEvents.Humidity.Val,
-    newestEvents.Illumination.Val,
+    DeviceId = new Guid(device.Id),
+    Temperature = newestEvents.Temperature.Val,
+    Humidity = newestEvents.Humidity.Val,
+    Illumination = newestEvents.Illumination.Val,
 };
 
-sheetClient.Append(spreadsheetId, "SensorValues!A1:D", insertRow);
+db.SensorValues.Add(sensorValue);
+await db.SaveChangesAsync();
