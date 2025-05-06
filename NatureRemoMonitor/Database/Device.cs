@@ -2,7 +2,7 @@
 
 namespace NatureRemoMonitor.Database;
 
-public partial class Device
+public class Device
 {
     [Column("id")] public Guid Id { get; set; }
 

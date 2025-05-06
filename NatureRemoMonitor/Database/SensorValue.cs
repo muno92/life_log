@@ -2,7 +2,7 @@
 
 namespace NatureRemoMonitor.Database;
 
-public partial class SensorValue
+public class SensorValue
 {
     [Column("id")] public Int64 Id { get; set; }
 

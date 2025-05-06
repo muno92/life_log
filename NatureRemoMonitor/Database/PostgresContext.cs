@@ -2,7 +2,7 @@
 
 namespace NatureRemoMonitor.Database;
 
-public partial class PostgresContext : DbContext
+public class PostgresContext : DbContext
 {
     public PostgresContext()
     {
