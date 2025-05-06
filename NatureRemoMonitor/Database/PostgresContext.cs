@@ -15,6 +15,7 @@ public class PostgresContext : DbContext
 
     public virtual DbSet<Device> Devices { get; set; }
 
+    // ReSharper disable once UnusedAutoPropertyAccessor.Global
     public virtual DbSet<SensorValue> SensorValues { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
