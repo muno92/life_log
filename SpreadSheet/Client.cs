@@ -13,7 +13,8 @@ public class Client
     {
         using var stream = new MemoryStream(Convert.FromBase64String(base64EncodedCredential));
 
-        var credential = GoogleCredential.FromStream(stream)
+        var serviceAccountCredential = CredentialFactory.FromStream<ServiceAccountCredential>(stream);
+        var credential = serviceAccountCredential.ToGoogleCredential()
             .CreateScoped(SheetsService.Scope.Spreadsheets).UnderlyingCredential;
 
         _sheetsService = new SheetsService(new BaseClientService.Initializer
