@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedTest", "SpeedTest\Spee
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadSheet", "SpreadSheet\SpreadSheet.csproj", "{34FC2177-0B57-4231-AA10-6A61B2B8C6EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadSheetTest", "SpreadSheetTest\SpreadSheetTest.csproj", "{694511F3-DFD7-417B-B741-8461CAEA5607}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +30,5 @@ Global
 		{34FC2177-0B57-4231-AA10-6A61B2B8C6EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34FC2177-0B57-4231-AA10-6A61B2B8C6EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34FC2177-0B57-4231-AA10-6A61B2B8C6EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{694511F3-DFD7-417B-B741-8461CAEA5607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{694511F3-DFD7-417B-B741-8461CAEA5607}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{694511F3-DFD7-417B-B741-8461CAEA5607}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{694511F3-DFD7-417B-B741-8461CAEA5607}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
